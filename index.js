@@ -7,6 +7,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN)
 bot.start((ctx) => ctx.reply(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : "Привет незнакомец"}, Какой вопрос вас интересует?`, getMainMenu()))
 bot.help((ctx) => ctx.reply(text.commands))
 
+// Функция получения кнопок при вызове команды старт
 function getMainMenu() {
     return Markup.keyboard (
         [
@@ -14,13 +15,14 @@ function getMainMenu() {
             [Markup.button.callback('Депозит не вернулся', 'btn_2')],
             [Markup.button.callback('Тарифы и условия аренды(Частые вопросы)', 'btn_3')],
             [Markup.button.callback('Сотрудничество', 'btn_4')],
-            [Markup.button.callback('Аккумулятор не заряжает', 'btn_5')],
+            [Markup.button.callback('Как скачать приложение Зарядиум', 'btn_5')],
             [ Markup.button.callback('Аккумулятор не вышел из слота', 'btn_6')],
             [Markup.button.callback('Аккумулятор увезен/утерян/украден', 'btn_7')]
         ]
     )
 }
 
+// Функция добавление действий к кнопкам 
 function addActionBot(name, src, text) {
     bot.hears(name, async (ctx) => {
         try {
@@ -38,6 +40,8 @@ function addActionBot(name, src, text) {
         }
     })
 }
+
+// Действия бота при нажатии на кнопки
 addActionBot('Аренда не завершилась',false, text.btn_1Text)
 addActionBot('Депозит не вернулся',false, text.btn_2Text)
 addActionBot('Тарифы и условия аренды(Частые вопросы)',false, text.btn_3Text)
