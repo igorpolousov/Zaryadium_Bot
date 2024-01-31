@@ -7,6 +7,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN)
 bot.start((ctx) => ctx.reply(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : "Привет незнакомец"}, Какой вопрос вас интересует?`, getMainMenu()))
 bot.help((ctx) => ctx.reply(text.commands))
 
+// If buttons menu hided, calls it
 bot.command('ask', async (ctx) => {
     try {
        await ctx.reply('Выберете вопрос из списка', getMainMenu())
@@ -15,7 +16,7 @@ bot.command('ask', async (ctx) => {
     }
 })
 
-// Функция получения кнопок при вызове команды старт
+// Buttons menu when start method called
 function getMainMenu() {
     return Markup.keyboard (
         [
@@ -32,8 +33,6 @@ function getMainMenu() {
 }
 
 // TODO: Сделать чтобы по таймауту выходил из бота, иначе не происходит обновление информации боте и на телефон не поступают обновления
-// Добавить QR отсканирован, павербанк не выдан - 3 позиция - ответ из приложения  
-// Знаки препинания
 
 // Add action to button function 
 function addActionBot(name, src, text) {
