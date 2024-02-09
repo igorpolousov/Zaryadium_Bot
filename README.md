@@ -13,5 +13,3 @@ Used modules: telegraf, dotenv, nodemon
 - npm i
 - request .env file with token
 
-
-- test
