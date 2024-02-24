@@ -12,4 +12,4 @@ Used modules: telegraf, dotenv, nodemon
 - install node.js
 - npm i
 - request .env file with token
-- test commit
+- VS code test commit
